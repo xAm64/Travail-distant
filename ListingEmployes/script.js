@@ -1,6 +1,9 @@
 let total = 0;
+let nombreEmployes = 0;
+let liste = '';
 function genererTableau(_data) {
 	let pair = true;
+	nombreEmployes = _data.length;
 	for (let i = 0; i < _data.length; i++) {
 		let employe = _data[i];
 		/* calcul Àge */
@@ -29,7 +32,7 @@ function genererTableau(_data) {
 		afficherEmploye.innerHTML = '<td>'+employe.id+'</td><td>'+nameBrut+'</td><td>'+mail+'@email.com</td><td>'+salaire+'</td><td>'+yearBirth+'</td><td><button>Dupliquer</button><button>Supprimmer</button></td>';
 		document.getElementById("eployes").appendChild(afficherEmploye);
 		if (i == _data.length-1) {
-			document.getElementById("total").innerHTML = 'Le total des salaire est de: '+total+'€';
+			document.getElementById("total").innerHTML = 'Le total du nombre d\'employés est de :'+nombreEmployes+' pour un salaire total de: '+total+'€';
 		}
 	}
 }
@@ -38,7 +41,9 @@ var listEmployes = new XMLHttpRequest();
 listEmployes.onreadystatechange= function() {
 	if(this.readyState == 4 && this.status == 200) {
 		data= JSON.parse(this.responseText);
-		genererTableau(data.data);
+		liste = data.data;
+		liste.sort((a, b) => a.employee_salary - b.employee_salary);
+		genererTableau(liste);
 	}
 }
 
