@@ -1,7 +1,11 @@
 let total = 0;
 let nombreEmployes = 0;
 let liste = '';
+let order = true;
 function genererTableau(_data) {
+	let afficherTitre = document.createElement('tr');
+	afficherTitre.innerHTML ='<tr><th>ID</th><th>Nom Prénom</th><th>Mail</th><th>Salaire Mensuel<button id="ordreSalaire" onclick="ordreSalaire();">‡</button></th><th>Année de naissance</th><th>Action</th></tr>';
+	document.getElementById("eployes").appendChild(afficherTitre);
 	let pair = true;
 	nombreEmployes = _data.length;
 	for (let i = 0; i < _data.length; i++) {
@@ -42,10 +46,25 @@ listEmployes.onreadystatechange= function() {
 	if(this.readyState == 4 && this.status == 200) {
 		data= JSON.parse(this.responseText);
 		liste = data.data;
-		liste.sort((a, b) => a.employee_salary - b.employee_salary);
 		genererTableau(liste);
 	}
 }
 
 listEmployes.open("GET", "http://dummy.restapiexample.com/api/v1/employees", true);
 listEmployes.send();
+
+function deleteContenue(){
+	document.getElementById("eployes").innerHTML = "";
+	genererTableau(liste);
+}
+
+function ordreSalaire() {
+	deleteContenue();
+	if (order == true){
+		liste.sort((a, b) => a.employee_salary - b.employee_salary);
+		order = false;
+	} else {
+		liste.sort((b, a) => a.employee_salary - b.employee_salary);
+		order = true;
+	}
+}
