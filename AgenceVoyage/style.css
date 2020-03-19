@@ -1,0 +1,31 @@
+* {box-sizing: border-box}
+body {background: #020 url(Photos/fond.jpg) no-repeat center fixed;
+margin: 0;
+width: 100vw;
+max-width: 100%; height: 100vh}
+
+.affiches {
+	background: rgb(208, 168, 113) url(Photos/fond-voyages.jpg);
+	max-height: 500px;
+	max-width: 1024px;
+	display: grid;
+	grid-template-areas: "T T"
+							"I C"
+							"I D";
+	grid-template-rows: 20% 80%;
+	grid-template-columns: 30% 70%;
+	margin-bottom: 4px;
+	border: 3px ridge #bb5;
+	border-radius: 0 6px 16px 0
+}
+
+.affiches img {max-width: 40%;
+border-radius: 10px}
+#titre {grid-area: T;
+background: #231902a0; color: #e5d994;
+}
+#photo {grid-area: I}
+#lieux {grid-area: C;
+background : #23190290; color: #e5d994}
+#description {grid-area: D;
+background: #23190280; color: #e5d994}
