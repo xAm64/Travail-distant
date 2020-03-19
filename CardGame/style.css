@@ -1,0 +1,48 @@
+* {box-sizing: border-box}
+body {background: #020 url("fond.jpg") no-repeat center fixed; background-size: cover; color : #9f9;
+margin: 0;
+width: 100vw;
+max-width: 100%; height: 100vh;}
+
+#personnages {text-align: center}
+th {border: 1px solid #ff9;
+background: #092b0a69}
+.pair {background: #440; color: #ff9}
+.impair {background :#040; color: #9f9}
+
+.power {color: rgb(136, 77, 224);
+height: 33%}
+.attack {color: #c03333;
+height: 34%}
+.armor {color: rgb(54, 121, 179);
+height: 33%}
+.gauche img {max-width: 100%;
+height: auto}
+
+/* Grille */
+.cartesAfficher {max-width: 99.6%}
+.carte {
+max-width : 25%;
+border: 1px solid #000;
+float: left;
+display: grid;
+grid-template-areas : "H H"
+				"G D"
+				"B B";
+grid-template-rows : 40% 1fr 20%;
+grid-template-columns: 70% 30%;}
+
+.haut {grid-area: H;
+background: #030; color: #D7E6CE}
+.gauche {grid-area: G;
+background: #171717;
+text-align: center}
+.droite {grid-area: D;
+background: #000; color: #D1D1D1;
+text-align: center}
+.bas {grid-area: B;
+background: #22354F}
+
+/* tableau personnage */
+.levelPerso {font-size: 300%; color: #ffb}
+.nomPerso {font-size: 200%; color: #9f9}
