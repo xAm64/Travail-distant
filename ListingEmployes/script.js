@@ -1,13 +1,16 @@
-let total = 0;
-let nombreEmployes = 0;
 let liste = '';
-let order = true;
+/* Les ordres */
+let orderSalaire = false;
+let orderNaissance = false;
+let orderID = false;
+/* contenue */
 function genererTableau(_data) {
+	let total = 0;
 	let afficherTitre = document.createElement('tr');
-	afficherTitre.innerHTML ='<tr><th>ID</th><th>Nom Prénom</th><th>Mail</th><th>Salaire Mensuel<button id="ordreSalaire" onclick="ordreSalaire();">‡</button></th><th>Année de naissance</th><th>Action</th></tr>';
+	afficherTitre.innerHTML ='<tr><th>ID<button onclick="ordreID();">±</button></th><th>Nom Prénom</th><th>Mail</th><th>Salaire Mensuel<button onclick="ordreSalaire();">±</button></th><th>Année de naissance<button onclick="ordreNaissance();">±</button></th><th>Action</th></tr>';
 	document.getElementById("eployes").appendChild(afficherTitre);
 	let pair = true;
-	nombreEmployes = _data.length;
+	let nombreEmployes = _data.length;
 	for (let i = 0; i < _data.length; i++) {
 		let employe = _data[i];
 		/* calcul Àge */
@@ -60,11 +63,33 @@ function deleteContenue(){
 
 function ordreSalaire() {
 	deleteContenue();
-	if (order == true){
+	if (orderSalaire == true){
 		liste.sort((a, b) => a.employee_salary - b.employee_salary);
-		order = false;
+		orderSalaire = false;
 	} else {
 		liste.sort((b, a) => a.employee_salary - b.employee_salary);
-		order = true;
+		orderSalaire = true;
+	}
+}
+
+function ordreNaissance() {
+	deleteContenue();
+	if (orderNaissance == true) {
+		liste.sort((a, b) => a.employee_age - b.employee_age);
+		orderNaissance = false;
+	} else {
+		liste.sort((b, a) => a.employee_age - b.employee_age);
+		orderNaissance = true;
+	}
+}
+
+function ordreID(){
+	deleteContenue();
+	if (orderID == true) {
+		liste.sort((a, b) => a.id - b.id);
+		orderID = false;
+	} else {
+		liste.sort((b, a) => a.id - b.id);
+		orderID = true;
 	}
 }
