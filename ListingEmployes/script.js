@@ -1,13 +1,16 @@
 let liste = '';
 /* Les ordres */
 let orderSalaire = false;
+let charSalaire = '±';
 let orderNaissance = false;
+let charNaissance = '±';
 let orderID = false;
+let charID = '±';
 /* contenue */
 function genererTableau(_data) {
 	let total = 0;
 	let afficherTitre = document.createElement('tr');
-	afficherTitre.innerHTML ='<tr><th>ID<button onclick="ordreID();">±</button></th><th>Nom Prénom</th><th>Mail</th><th>Salaire Mensuel<button onclick="ordreSalaire();">±</button></th><th>Année de naissance<button onclick="ordreNaissance();">±</button></th><th>Action</th></tr>';
+	afficherTitre.innerHTML ='<tr><th>ID<button onclick="ordreID();">'+charID+'</button></th><th>Nom Prénom</th><th>Mail</th><th>Salaire Mensuel<button onclick="ordreSalaire();">'+charSalaire+'</button></th><th>Année de naissance<button onclick="ordreNaissance();">'+charNaissance+'</button></th><th>Action</th></tr>';
 	document.getElementById("eployes").appendChild(afficherTitre);
 	let pair = true;
 	let nombreEmployes = _data.length;
@@ -65,9 +68,11 @@ function ordreSalaire() {
 	deleteContenue();
 	if (orderSalaire == true){
 		liste.sort((a, b) => a.employee_salary - b.employee_salary);
+		charSalaire = '▼';
 		orderSalaire = false;
 	} else {
 		liste.sort((b, a) => a.employee_salary - b.employee_salary);
+		charSalaire = '▲';
 		orderSalaire = true;
 	}
 }
@@ -76,9 +81,11 @@ function ordreNaissance() {
 	deleteContenue();
 	if (orderNaissance == true) {
 		liste.sort((a, b) => a.employee_age - b.employee_age);
+		charNaissance = '▼';
 		orderNaissance = false;
 	} else {
 		liste.sort((b, a) => a.employee_age - b.employee_age);
+		charNaissance = '▲';
 		orderNaissance = true;
 	}
 }
@@ -87,9 +94,11 @@ function ordreID(){
 	deleteContenue();
 	if (orderID == true) {
 		liste.sort((a, b) => a.id - b.id);
+		charID = '▼';
 		orderID = false;
 	} else {
 		liste.sort((b, a) => a.id - b.id);
+		charID = '▲';
 		orderID = true;
 	}
 }
