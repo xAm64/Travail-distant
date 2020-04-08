@@ -14,6 +14,7 @@
 		* {box-sizing: border-box}
 		body {background: #020; color: #9f9}
 		a {color: #bf9}
+		a:hover {color: #fa9}
 	</style>
 </head>
 <body>
@@ -24,6 +25,10 @@
 	<tr><td>Liste d'employés</td><td><a href="ListingEmployes">Lien</a></td></tr>
 	<tr><td>Jeu de cartes</td><td><a href="CardGame">Lien</a></td></tr>
 	<tr><td>Carousel Photos</td><td><a href="CarousselPhotos">Lien</a></td></tr>
+	<tr><td>Calcul des taxes</td><td><a href="tp-calculTax">Lien</a></td></tr>
 	</table>
+<?php 
+	echo '<p>test php</p>';
+?>
 </body>
 </html>
