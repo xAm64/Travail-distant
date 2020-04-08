@@ -22,13 +22,14 @@
 	<input id="revenus" type="number" value="0" min="0">
 	<?php
 		$impots = 0;
+		$revenus = $_GET['revenus'];
 		if ($revenus <= 14000){
-			$impots = 9
+			$impots = 9;
 		} else {
-			$impots = 14
+			$impots = 14;
 		}
 		$montantImpots = $revenus * $impots / 100;
-		echo '<p>Le montant de l\'impots est de $impots %, ce qui fait une somme de $montantImpots à payer';
+		echo "<p>Le montant des revenus déclarés est: ".$revenus.". L\'impots est de ".$impots."%, ce qui fait une somme de ".$montantImpots." à payer";
 	?>
 	</table>
 </body>
