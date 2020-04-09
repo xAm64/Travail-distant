@@ -24,7 +24,7 @@
 		$impots = 0;
 		if (isset($_GET['revenus'])){
 			$revenusTotal = (int)$_GET['revenus'];
-			if ($revenusTotal <= 14000){
+			if ($revenusTotal <= 15000){
 				$impots = 9;
 			} else {
 				$impots = 14;
