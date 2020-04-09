@@ -19,18 +19,30 @@
 </head>
 <body>
 	<h1>Exercice php</h1>
-	<input id="revenus" type="number" value="0" min="0">
+	<a href="?revenus=0">lien test</a>
 	<?php
 		$impots = 0;
-		$revenus = $_GET['revenus'];
-		if ($revenus <= 14000){
-			$impots = 9;
+		if (isset($_GET['revenus'])){
+			$revenusTotal = (int)$_GET['revenus'];
+			if ($revenusTotal <= 14000){
+				$impots = 9;
+			} else {
+				$impots = 14;
+			}
+			$montantImpots = $revenusTotal * $impots / 100;
+			echo "<p>Le montant des revenus déclarés est: ".$revenusTotal.". L'impots est de ".$impots."%, ce qui fait une somme de ".$montantImpots." à payer";
 		} else {
-			$impots = 14;
+			?>
+			<script>
+				function sendValue(){
+					let nombre = document.getElementById("revenus").value;
+					document.location.href="?revenus="+nombre;
+				}
+			</script>
+			<p>saisir le montant des revenus</p><input id="revenus" type="number" value="0" min="0"><input type="button" id="envoyer" value="envoyer" onclick="sendValue()"></input>
+			<?php
 		}
-		$montantImpots = $revenus * $impots / 100;
-		echo "<p>Le montant des revenus déclarés est: ".$revenus.". L\'impots est de ".$impots."%, ce qui fait une somme de ".$montantImpots." à payer";
 	?>
-	</table>
+
 </body>
 </html>
