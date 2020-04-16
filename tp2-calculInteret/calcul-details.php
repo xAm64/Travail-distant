@@ -24,6 +24,10 @@
 <body>
 	<h1>Exercice prêt</h1>
 	<?php
+		if (empty($_POST['montant']) || empty($_POST['taux']) || empty($_POST['annees'])){
+			header('location: ./index.php');
+			exit();
+		}
 		$pair = false;
 		$montant = $_POST['montant'];
 		$tauxBase = $_POST['taux'];
