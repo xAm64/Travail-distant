@@ -23,15 +23,25 @@
         $impots = new calcul;
         if(isset($_GET['revenus'])){
             $revenus = (int)$_GET['revenus'];
-            $montantImpots = calcul.calculerTaux($revenus);
+            if ($revenus >= 0){
+                $montantImpots = $impots->calculerTaux($revenus);
             echo "<p>Vous avez déclarer: ".$revenus."€, vous devez payer: ".$montantImpots."€ d'impots.</p>";
-        } else {
             ?>
-            <p>Vous avez fait une erreur, le calcul ne pourra pas se faire</p>
-            <p>Voici l'option qui vous est proposer</p>
-            <a href="./index.html"><input type="button" value="recommencer"></a>
+            <a href="./index.html"><input type="button" value="nouvel essaie"></a>
             <?php
+            } else {
+                redirection('La valeur minimale est de 0');
+            }
+            
+        } else {
+            redirection("Vous avez envoyer une valeur qui n'existe pas (merci de saisir que des chiffres supérieurs à 0)");
         }
+    function redirection($_message){
+        echo "<p>Vous avez fait l'erreur suivante: ".$_message."</p>"
+        ?>
+        <a href="./index.html"><input type="button" value="recommencer"></a>
+        <?php
+    }
     ?>
 </body>
 </html>
