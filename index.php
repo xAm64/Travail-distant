@@ -28,6 +28,7 @@
 	<tr><td>Calcul des taxes</td><td><a href="tp-calculTax">Lien</a></td></tr>
 	<tr><td>Calcul taux emprun</td><td><a href="tp2-calculInteret">Lien</a></td></tr>
 	<tr><td>php objet</td><td><a href="php-objet">Lien</a></td></tr>
+	<tr><td>TP php 2</td><td><a href="tp-php-2">Lien</a></td></tr>
 	</table>
 <?php 
 	echo '<p>test php</p>';
