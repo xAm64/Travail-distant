@@ -24,19 +24,31 @@
 	<h1>Exercice prêt</h1>
 	<div class="cadre">
 		<p>Version 2, calcul mensualité</p>
-		<form method="post" action="calcul.php">
-		<p>Montant emprunté<input type="number" id="montant" name="montant" value="0" min="0"></imput></p>
-		<p>Taux intérêt %<input type="number" id="taux" name="taux" value="0" min="0" max="60"></imput></p>
-		<p>durée du remboursement en années<input type="number" id="annees" name="annees" value="0" min="0" max="35"></imput></p>
-		<input type="submit" value="envoyer">
+		<form method="get" action="calcul.php" enctype="text/plain">
+		<p>Montant emprunté
+			<input type="number" id="montant" name="montant" value="2000" min="500">
+		</p>
+		<p>Taux intérêt %
+			<input type="number" id="taux" name="taux" value="3" min="0" max="60">
+		</p>
+		<p>durée du remboursement en années
+		<input type="number" id="annees" name="annees" value="4" min="0" max="35">
+		</p>
+		<input type="submit" value="envoyer" name="valider-simple">
 		</form>
 	</div>
 	<div class="cadre">
 		<p>Version 1, calcul avec tableau</p>
-		<form method="post" action="calcul-details.php">
-		<p>Montant emprunté<input type="number" id="montant" name="montant" value="0" min="0"></imput></p>
-		<p>Taux intérêt %<input type="number" id="taux" name="taux" value="0" min="0" max="60"></imput></p>
-		<p>durée du remboursement en années<input type="number" id="annees" name="annees" value="0" min="0" max="35"></imput></p>
+		<form method="get" action="calcul-details.php" enctype="text/plain">
+		<p>Montant emprunté
+			<input type="number" id="montant" name="montant" value="2000" min="500">
+		</p>
+		<p>Taux intérêt %
+			<input type="number" id="taux" name="taux" value="3" min="0" max="60">
+		</p>
+		<p>durée du remboursement en années
+			<input type="number" id="annees" name="annees" value="3" min="0" max="35">
+		</p>
 		<input type="submit" value="envoyer">
 		</form>
 	</div>

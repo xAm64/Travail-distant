@@ -19,6 +19,14 @@
 </head>
 <body>
 <h1>TP Php</h1>
-
+<p>créer une nouvelle personne<p>
+<p>Nom<input type="text" name="nom" value="nom"></p>
+<p>Prénom<input type="text" name="prenom" value="prenom"></p>
+<p>Adresse<textarea name="adress" rows="5">quelque part</textarea></p>
+<p>Mail<input type="email" name="mail" value="moi@mon.adress.com"></p>
+<p><input type="submit" value="Envoyer"></p>
+<?php
+	require personne.php;
+?>
 </body>
 </html>

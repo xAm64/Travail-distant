@@ -20,12 +20,22 @@
 <body>
 	<h1>Exercice prêt</h1>
 	<?php
-		$montant = $_POST['montant'];
-		$taux = $_POST['taux'] / 100;
-		$montant = $montant * (1 + $taux);
-		$annees = $_POST['annees'];
-		$calculMensuel = ($montant / $annees) / 12;
-		echo "Le montant mensuel à rembouser est de:".$calculMensuel."€ par mois";
+		if(isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
+			$montant = $_GET['montant'];
+			$taux = ($_GET['taux'] / 100) / 12;
+			$montant = $montant * (1 + $taux);
+			$nombreMois = $_GET['annees']*12;
+			$quotient = (1 - pow ( (1+$taux), -$nombreMois));
+			$calculMensuel = $montant * $taux / $quotient;
+			echo "Le montant mensuel à rembouser est de:".round($calculMensuel,2)."€ par mois";
+		} else {
+			?>
+			<p>Une erreur à été détecter<br>
+			Le calcul ne peux pas se faire</p>
+			<a href="index.php"><input type="button" value="recommencer"></a>
+			<?php
+		}
+		
 		/*echo "<table>
 		<tr><th>mois</th><th>capital du restant</th><th>intérêts restant</th></tr>
 		<tr><td>1<7td><tr>"*/
