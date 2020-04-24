@@ -5,7 +5,7 @@ class tableau{
     public $nombreMois;
     //mes variables
     private $pair= false;
-    private $interetsRestant;
+    private $interets;
     private $mensualite;
     private $total = 0;
     private $mensualiteMontant;
@@ -15,41 +15,46 @@ class tableau{
         $this->montant = $_montant;
         $this->tauxMensuel = (double)$_taux/(100*12);
         $this->nombreMois = $_annees * 12;
-        $this->interetsRestant = $_montant * 3 / 100;
-        $this->mensualiteMontant = round(($_montant / $_annees),2);
-        $this->mensualiteInterets = round((($_montant * $_taux / 100) / ($_annees * 12)),2);
+        $this->interets = $_montant * 3 / 100;
+        $this->mensualiteMontant = ($_montant / $_annees) / 12;
+        $this->mensualiteInterets = ($_montant * $_taux / 100) / ($_annees * 12);
     }
     public function calculPayeMensuel(){
         $quotient= 1- pow((1+$this->tauxMensuel), -$this->nombreMois);
         $mensuel = ($this->montant + $this->tauxMensuel) / $quotient;
         $this->mensualite = $mensuel;
     }
-    private function calculNouveauMontant(){
-        $this->montant = $this->montant - $mensualiteMontant;
-        $this->interetsRestant = $this->interetsRestant - $mensualiteInterets;
+
+    private function nouvelleMensualite() {
+        $this->montant = round(($this->montant - $this->mensualiteMontant),2);
+        $this->interets = round(($this->interets - $this->mensualiteInterets),2);
+        $this->total = round(($this->total + $this->mensualite),2); 
     }
+    
     public function toutAfficher(){
     ?>
     <table>
     <tr><th>mois</th><th>montant restant</th><th>intérêts restant</th><th>Mensualitée</th><th>Total payé</th></tr>
     <?php
-        for ($i = 1; $i <= $nombreMois; $i++){
-            if ($pair == true){
+        $this->mensualite = round(($this->mensualiteMontant + $this->mensualiteInterets),2);
+        for ($i = 1; $i <= $this->nombreMois; $i++){
+            if ($this->pair == true){
                 ?>
-                <tr class="pair"><td class="pair"><?php echo $i ?></td><td class="pair"><?php echo $montantRestant ?></td><td class="pair"><?php echo $interetsRestant ?></td><td class="pair"><?php echo $mensualite ?></td><td class="pair"><?php echo $total ?></td></tr>
+                <tr class="pair"><td class="pair"><?php echo $i ?></td><td class="pair"><?php echo $this->montant ?></td><td class="pair"><?php echo $this->interets ?></td><td class="pair"><?php echo $this->mensualite ?></td><td class="pair"><?php echo $this->total ?></td></tr>
                 <?php
-                calculNouveauMontant();
-                $pair = false;
+                $this->nouvelleMensualite();
+                $this->pair = false;
             } else {
                 ?>
-                <tr class="impair"><td class="impair"><?php echo $i ?></td><td class="pair"><?php echo $montantRestant ?></td><td class="impair"><?php echo $interetsRestant ?></td><td class="impair"><?php echo $mensualite ?></td><td class="impair"><?php echo $total ?></td></tr>
+                <tr class="impair"><td class="impair"><?php echo $i ?></td><td class="impair"><?php echo $this->montant ?></td><td class="impair"><?php echo $this->interets ?></td><td class="impair"><?php echo $this->mensualite ?></td><td class="impair"><?php echo $this->total ?></td></tr>
                 <?php
-                calculNouveauMontant();
-                $pair = true;
+                $this->nouvelleMensualite();
+                $this->pair = true;
             }
         }
         ?>
         </table>
+        <p>Total payé: <?php echo $this->total ?>€</p>
         <?php
     
     }

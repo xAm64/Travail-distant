@@ -19,12 +19,16 @@
 		.cadre {border: 2px solid #ff9;
 		margin-bottom: 5px}
 		.bordureBas {border-bottom: 1px solid #ff9}
+		th, td {border: 1px solid #ff9}
+		.pair {background: #440; color: #ff9}
+		.impair {background: 040; color: #9f9}
 	</style>
 </head>
 <body>
 <h1>Exercice prêt</h1>
 <?php
 require_once ("metier/serv-financier.php");
+require_once ("metier/tableau.php");
 ?>
 
 <?php
@@ -42,7 +46,6 @@ if (isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
 	$resultat = $monFinancier->calculMensualite();
 	echo "<p>Pour: ".$_GET['montant']."€ empruntés avec un taux de: ".$_GET['taux']." %, vous devrez rembourser: ".round($resultat,2)."€ par mois. pendant :".$_GET['annees']." ".direAn($_GET['annees'])."</p>";
 	if ($_GET['tableau'] == 'on'){
-		require_once ("metier/tableau.php");
 		$monTableau = new tableau($_GET['montant'], $_GET['taux'], $_GET['annees']);
 		$voir = $monTableau->toutAfficher();
 		echo $voir;
@@ -66,6 +69,7 @@ if (isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
 }
 
 ?>
+<!--
 <h2 class="bordureBas">Ancienne version</h2>
 <div class="cadre">
 	<p>Version 2, calcul mensualité</p>
@@ -98,5 +102,6 @@ if (isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
 	<input type="submit" value="envoyer">
 	</form>
 </div>
+-->
 </body>
 </html>
