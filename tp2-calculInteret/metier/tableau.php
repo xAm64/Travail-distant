@@ -21,7 +21,7 @@ class tableau{
     }
     public function calculPayeMensuel(){
         $quotient= 1- pow((1+$this->tauxMensuel), -$this->nombreMois);
-        $mensuel = ($this->montant + $this->tauxMensuel) / $quotient;
+        $mensuel = ($this->montant * $this->tauxMensuel) / $quotient;
         $this->mensualite = $mensuel;
     }
 

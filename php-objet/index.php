@@ -19,6 +19,9 @@
 	</style>
 </head>
 <body>
+<?php
+require_once ("methodes/monText.php");
+?>
 <script>
 	function sendValue(){
 		let nombre = document.getElementById("revenus").value;
@@ -27,6 +30,7 @@
 	</script>
 	<h1>Tp Php Poo 1</h1>
 	<div class="cadre">
+		<p>Exercice Calcul de la taxe</p>
 		<p>saisir le montant des revenus</p>
 		<input id="revenus" type="number" value="0" min="0">
 		<input type="button" id="envoyer" value="envoyer" onclick="sendValue()">
@@ -39,6 +43,30 @@
 			<p>Mot de pass<input type="password" id="password" name="password"></p>
 			<p><input type="submit" value="Envoyer"></p>
 		</form>
+	</div>
+	<div class="cadre">
+	<p>Exercice la classe string</p>
+	<?php
+	if (isset($_GET['message'])){
+		$monText = new monText ($_GET['message']);
+		echo $monText->afficherMessage();
+		echo $monText->compterLettres();
+		if (isset($_GET['caractere'])){
+			echo $monText->charAt($_GET['caractere']);
+		}
+		?>
+		<a href="./"><input type="button" value="refaire"></a>
+		<?php
+	} else {
+		?>
+		<form method="get" enctype="text/plain">
+			<p>Écrire votre text ici: <input type="text" name="message"></p>
+			<p>Écrire le numéro du caractère que vous voullez extraire: <input type="number" min="1" name="caractere"></p>
+			<p><button type="submit">Envoyer</button></p>
+		</form>
+		<?php
+	}
+	?>
 	</div>
 </body>
 </html>
