@@ -48,11 +48,20 @@ require_once ("methodes/monText.php");
 	<p>Exercice la classe string</p>
 	<?php
 	if (isset($_GET['message'])){
-		$monText = new monText ($_GET['message']);
-		echo $monText->afficherMessage();
-		echo $monText->compterLettres();
-		if (isset($_GET['caractere'])){
-			echo $monText->charAt($_GET['caractere']);
+		if ($_GET['message'] != null){
+			$monText = new monText ($_GET['message']);
+			echo $monText->afficherMessage();
+			echo $monText->compterLettres();
+			if (isset($_GET['caractere'])){
+				if ($_GET['caractere'] != null){
+					echo $monText->charAt($_GET['caractere']);
+				}
+			}
+			echo $monText->subString();
+			echo "<p>En minuscules: ".$monText->toLowerCase()."</p>";
+			echo "<p>En majuscules: ".$monText->toUpperCase()."</p>";
+		} else {
+			echo "<p>Vous n'avez rien saisie<p>";
 		}
 		?>
 		<a href="./"><input type="button" value="refaire"></a>
@@ -61,7 +70,7 @@ require_once ("methodes/monText.php");
 		?>
 		<form method="get" enctype="text/plain">
 			<p>Écrire votre text ici: <input type="text" name="message"></p>
-			<p>Écrire le numéro du caractère que vous voullez extraire: <input type="number" min="1" name="caractere"></p>
+			<p>Écrire le numéro du caractère que vous voullez extraire: <input type="number" min="1" name="caractere"> (laisser vide n'effectura pas cette opération)</p>
 			<p><button type="submit">Envoyer</button></p>
 		</form>
 		<?php

@@ -20,7 +20,7 @@ public function charAt($_nombre){
     $retour = "";
     $string = $this->message;
     $classement;
-    if($nombre > strlen($this->message) || $nombre < 0){
+    if($_nombre > strlen($this->message) || $nombre < 0){
         $retour = "<p>Le caractère numéro: ".$_nombre." n'existe pas !</p>";
     } else {
         if ($_nombre == 1){
@@ -32,5 +32,21 @@ public function charAt($_nombre){
     }
     return $retour;
 }
+
+public function subString(){
+    $first = $this->message[0];
+    $last = $this->message[(strlen($this->message) -1)];
+    $sortie = "<p>la première lettre de: ".$this->message." est: ".$first." et la dernière est: ".$last.".";
+    return $sortie;
+}
+
+public function toLowerCase(){
+    return strtolower($this->message);
+}
+
+public function toUpperCase(){
+    return strtoupper($this->message);
+}
+
 }
 ?>
