@@ -10,23 +10,25 @@
 <title>Exercice login </title>
 <style>
 	body {background: #020; color: #9f9}
+	th, tr {border: 1px solid #ff9}
 </style>
 </head>
 <body>
 <h1>TP restaurant</h1>
 <?php
 $db = new PDO('mysql:host=127.0.0.1;dbname=tprestaurant', 'root', '');
-$sql = 'SELECT * from duchemin';
-$avis = $db->prepare($sql); //prépare la requête SQL
+$afficher = $db->query('SELECT * from duchemin');
+/*$avis = $db->prepare($sql); //prépare la requête SQL
 $avis->setFetchMode(PDO::FETCH_ASSOC); //Récupére le contenue
 $avis->execute(); //execute la requête
-$sortie = $sql->fetchAll(PDO::FETCH_OBJ);
+$sortie = $sql->fetchAll(PDO::FETCH_OBJ);*/
 ?>
-<ul>
-<?php foreach ($sortie as $sorti): ?>
-	<li><?= $sorti->nom ?></li>
-	<?php endforeach ?>
-</ul>
+<table>
+	<tr><th>identitiant</th><th>nom</th><th>adresse</th><th>prix</th><th>commentaire</th><th>note</th><th>date</th></tr>
+<?php while ($sortie = $afficher->fetch()){
+	echo "<tr><td>".$sortie['id']."</td><td>".$sortie['nom']."</td><td>".$sortie['adresse']."</td><td>".$sortie['prix']."</td><td>".$sortie['commentaire']."</td><td>".$sortie['note']."/10</td><td>".$sortie['date']."</td></tr>";
+	}?>
+</table>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
