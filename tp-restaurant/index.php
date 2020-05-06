@@ -10,7 +10,8 @@ $sortie = $sql->fetchAll(PDO::FETCH_OBJ);*/
 <table>
 	<tr><th>identitiant</th><th>nom</th><th>adresse</th><th>prix</th><th>commentaire</th><th>note</th><th>date</th></tr>
 <?php while ($sortie = $afficher->fetch()){
-	echo "<tr><td>".$sortie['id']."</td><td>".$sortie['nom']."</td><td>".$sortie['adresse']."</td><td>".$sortie['prix']."</td><td>".$sortie['commentaire']."</td><td>".$sortie['note']."/10</td><td>".implode('-',array_reverse(explode('/',$sortie['date'])))."</td></tr>";
+	echo "<tr><td>".$sortie['id']."</td><td>".$sortie['nom']."</td><td>".$sortie['adresse']."</td><td>".$sortie['prix']."</td><td>".$sortie['commentaire']."</td><td>".$sortie['note']."/10</td><td>".implode('-',array_reverse(explode('/',$sortie['dateVisite'])))."</td></tr>";
 	}?>
 </table> 
+<a href="ajout.php"><input type="button" value="Ajouter"></a>
 <?php require_once ("fonct/footer.php"); ?>
