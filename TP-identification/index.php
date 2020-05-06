@@ -23,20 +23,22 @@ session_start();
 //include ( "db/utilisateurs.php");
 include("db/utilisateur.php");
 //accès base de données
+$option = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
 $db = new PDO('mysql:host=localhost;dbname=guide3', 'root', '');
 /* adresse ; nom, username, password */
 $sql = 'SELECT * from utilisateurs';
-$select_messages = $db->prepare($sql);
-$select_messages->setFetchMode(PDO::FETCH_ASSOC);
-$select_messages->execute();
+$select_messages = $db->prepare($sql); //prépare la requête
+$select_messages->setFetchMode(PDO::FETCH_ASSOC);// récupére le résultat
+$select_messages->execute(); //execute la requête
+$tabUtilisateurs = $select_messages->fetchAll();
 echo var_dump($select_messages->fetchAll());
 //Code
+$number = $select_messages->rowCount();
 if(isset($_POST["identifiant"]) && isset($_POST["passUser"])){
 	$chaine=0;
-	foreach ($tabUtilisateurs as $cle => $val) {
-		if($_POST["identifiant"]==$cle && password_verify($_POST["passUser"], $val)==true){
-				$chaine=$cle;
-				echo 'Clé:'.$cle.', valeur:'.$val.'<br>';
+	for ($i=0; $i<$number; $i++) {
+		if($_POST["identifiant"]==$tabUtilisateurs && password_verify($_POST["passUser"], $tabUtilisateurs[$i]['"passUser'])==true){
+				$chaine=tabUtilisateurs[$i]["identifiant"];
 				break;
 			}
 		}
