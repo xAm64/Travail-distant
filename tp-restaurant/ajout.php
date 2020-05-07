@@ -35,7 +35,7 @@ if (isset($_POST['nom']) && isset($_POST['adresse']) && isset($_POST['prix']) &&
         <tr><th>nom</th><th>adresse</th><th>prix</th><th>commentaire</th><th>note</th><th>date</th></tr>
         <tr><td><?php echo $nom ?></td><td><?php echo $adresse ?></td><td><?php echo $prix ?>€</td><td><?php echo $commentaire ?></td><td><?php echo $note ?></td><td><?php echo $date ?></td></tr>
         </table>
-        <p>Confirmer vous cet envoie ?<button type="submit">Oui</button><button type="restet">Non</button>
+        <p>Confirmer vous cet envoie ?<button type="submit">Oui</button><a href="index.php"><button type="restet">Non</button></a>
         <?php
     } else {
         echo "<p>Les champs vides ne sont pas autorisés, votre formulaire n'a pas été envoyé !</p>"
