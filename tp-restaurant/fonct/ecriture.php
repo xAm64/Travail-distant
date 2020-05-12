@@ -3,7 +3,7 @@ class duchemin {
     private $db;
     private $requete;
 
-    public function __construct (){
+    public function __construct() {
         $options = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_NUM);
         try {
             $this->db = new PDO('mysql:host=127.0.0.1;dbname=tprestaurant', 'root', '', $options);
@@ -36,9 +36,8 @@ class duchemin {
     }
 
     public function ecrire($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite){
-        $this->db->exec ("INSERT INTO duchemin
-        (nom, adresse, prix, commentaire, note, dateVisite)
-        VALUES ($_nom,$_adresse,$_prix,$_commentaire,$_note,$_dateVisite)
+        $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) 
+        VALUES ($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite)
         ");
     }
 
