@@ -80,8 +80,7 @@ if (verify1()==true){
         $commentaire = $_POST['commentaire'];
         $note = $_POST['note'];
         $dateVisite = $_POST['dateVisite'];
-        echo $dateVisite;
-        echo afficherFormulaire($_POST['nom'], $_POST['adresse'], $_POST['prix'], $_POST['commentaire'], $_POST['note'], $_POST['dateVisite']);
+        echo afficherFormulaire($nom, $adresse, $prix, $commentaire, $note, $dateVisite);
         ?>
         <table>
         <p>Confirmer vous cet envoie ?</p>
@@ -119,6 +118,7 @@ if (verify1()==true){
         <p>Date: <input type="date" name="dateVisite"></p>
         <button type="submit">Envoyer</button>
     </form>
+    <a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a>
     <?php
 }
 require_once ("fonct/footer.php");

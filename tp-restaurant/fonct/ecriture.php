@@ -44,5 +44,11 @@ class duchemin {
     public function effacer($_nom){
         $this->db->exec ("DELETE FROM duchemin WHERE nom='$nom'");
     }
+
+    public function recherche($_nom){
+        $requete = "SELECT nom FROM duchemin WHERE nom='$_nom'";
+        $execution = $this->db->query($requete);
+        return $execution->fetch();
+    }
 }
 ?>
