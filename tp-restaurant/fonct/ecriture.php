@@ -36,9 +36,8 @@ class duchemin {
     }
 
     public function ecrire($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite){
-        $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) 
-        VALUES ($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite)
-        ");
+        /* ! */ ?><script>alert('<?php echo "hey!!" ?>');</script><?php /* Zone de controle */
+        $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) VALUES (".$_nom.",".$_adresse.",".$_prix.",".$_commentaire.",".$_note.",".$_dateVisite.")");
     }
 
     public function effacer($_nom){

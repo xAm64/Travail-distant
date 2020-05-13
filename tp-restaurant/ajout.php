@@ -68,6 +68,7 @@ if (verify1()==true){
         $dateVisite = $_POST['dateVisite'];
         ?>
         <p>La table suivante a bien été envoyé !</p>
+        <!-- ! --><script>alert('<?php echo $commentaire ?>');</script><!-- Zone de contrôle a supprimmer après -->
         <?php echo afficherFormulaire($nom, $adresse, $prix, $commentaire, $note, $dateVisite);?>
         <a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a><?php
         $maTable->ecrire($nom, $adresse, $prix, $commentaire, $note, new dateTime($dateVisite));
