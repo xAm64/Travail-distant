@@ -36,12 +36,12 @@ class duchemin {
     }
 
     public function ecrire($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite){
-        /* ! */ ?><script>alert('<?php echo "hey!!" ?>');</script><?php /* Zone de controle */
-        $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) VALUES (".$_nom.",".$_adresse.",".$_prix.",".$_commentaire.",".$_note.",".$_dateVisite.")");
+        $_commentaire = addslashes($_commentaire);
+        $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) VALUES ('$_nom','$_adresse','$_prix','$_commentaire','$_note','$_dateVisite')");
     }
 
     public function effacer($_nom){
-        $this->db->exec ("DELETE FROM duchemin WHERE nom='$nom'");
+        $this->db->exec ("DELETE FROM duchemin WHERE nom='$_nom'");
     }
 
     public function recherche($_nom){

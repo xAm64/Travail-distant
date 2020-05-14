@@ -24,25 +24,25 @@ function afficherFormulaire(){
     </form>';
     return $formulaire;
 }
-function retour(){
-    echo '<p class="text-danger>Erreur importante détecter, l\'action n\'a pas abouti</p>';
-    echo '<a href="index.php"><input type="button" value="◄ Retour à l\'accueil"></a>';
-}
+
 //code
 echo "<h2>Supprimmer une personne</h2>";
 if (isset($_POST['personne'])){
-    if (verifierNonVide($_POST['personne'])==true){
-        $personne = $myTable->recherche($_POST['personne']);
-        if (verifierNonVide($personne)==true){
-            $myTable->effacer($personne);
-            echo '<p>La partie de: '.$personne.' à bien été effacer</p>';
-            echo '<a href="index.php"><input type="button" value="◄ Retour à l\'accueil"></a>';
-        } else {
-            echo retour();
-        }
-    } else {
-        echo retour();
+    $verify=true;
+    if (verifierNonVide($_POST['personne'])==false){
+        $verify=false;
     }
+    if ($myTable->recherche($_POST['personne'])==null){
+        $verify=false;
+    }
+    if ($verify==true){
+        $myTable->effacer($_POST['personne']);
+        echo "<p>La partie de: ".$_POST['personne']." à bien été effacer</p>";
+        echo '<a href="index.php"><input type="button" value="◄ Retour à l\'accueil"></a>';
+    } else {
+        echo '<p class="text-danger>Erreur importante détecter, l\'action n\'a pas abouti</p>';
+    echo '<a href="index.php"><input type="button" value="◄ Retour à l\'accueil"></a>';
+    }   
 }
 if (verifierGet()==true){
     $personne = ($_GET['personne']);

@@ -65,13 +65,12 @@ if (verify1()==true){
         $prix = $_POST['prix'];
         $commentaire = $_POST['commentaire'];
         $note = $_POST['note'];
-        $dateVisite = $_POST['dateVisite'];
+        $dateVisite = (new DateTime($_POST['dateVisite']))->format('Y-m-d');
         ?>
         <p>La table suivante a bien été envoyé !</p>
-        <!-- ! --><script>alert('<?php echo $commentaire ?>');</script><!-- Zone de contrôle a supprimmer après -->
         <?php echo afficherFormulaire($nom, $adresse, $prix, $commentaire, $note, $dateVisite);?>
         <a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a><?php
-        $maTable->ecrire($nom, $adresse, $prix, $commentaire, $note, new dateTime($dateVisite));
+        $maTable->ecrire($nom, $adresse, $prix, $commentaire, $note, $dateVisite);
     } else {
     // Va afficher le formulaire à l'utilisateur avant de l'envoyer
     if (verify3($_POST['nom'], $_POST['adresse'], $_POST['prix'], $_POST['commentaire'], $_POST['note'], $_POST['dateVisite']) == true){
@@ -111,12 +110,12 @@ if (verify1()==true){
     // rien est rempli, l'utilisateur tombe sur le formulaire à remplir
     ?>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
-        <p>Nom et Pérnom: <input type="text" name="nom" pattern="{6}"></p>
-        <p>Adresse: <input type="text" name="adresse" pattern="{15}"></p>
-        <p>Prix: <input type="number" name="prix" step="0.01" min="0"></p>
-        <p>Commentaire: <textarea name="commentaire" rows="5" cols="60" pattern="{20}"></textarea></p>
-        <p>Note /10: <input type="number" name="note" min="0" max="10"></p>
-        <p>Date: <input type="date" name="dateVisite"></p>
+        <p>Nom et Pérnom: <input type="text" name="nom" value="" pattern="{6}"></p>
+        <p>Adresse: <input type="text" name="adresse" value="" pattern="{15}"></p>
+        <p>Prix: <input type="number" name="prix" step="0.01" value="" min="0"></p>
+        <p>Commentaire: <textarea name="commentaire" value="" rows="5" cols="60" pattern="{20}"></textarea></p>
+        <p>Note /10: <input type="number" name="note" value="" min="0" max="10"></p>
+        <p>Date: <input type="date" name="dateVisite" value=""></p>
         <button type="submit">Envoyer</button>
     </form>
     <a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a>
