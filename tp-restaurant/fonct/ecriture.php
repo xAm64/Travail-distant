@@ -35,8 +35,33 @@ class duchemin {
         echo "</tbody></table>";
     }
 
+    public function modifier(){
+        $this->requete->execute();
+        echo "<table>
+        <thead><tr><th>Actions</th><th>nom</th><th>adresse</th><th>prix</th><th>commentaire</th><th>note</th><th>date de visite</th></tr></thead>";
+        echo "<tbody>";
+        while ($tabRow = $this->requete->fetch()){
+            echo "<tr>";
+            for ($i = 0; $i < count($tabRow); $i++){
+                if ($i == 0){
+                    echo '<td><a href="?id='.$tabRow[$i].'"><input type="button" value="supprimmer"></a></td>';
+                } else if ($i == 5){
+                    echo "<td>".$tabRow[$i]."/10</td>";  
+                } else if ($i == 6){
+                    echo "<td>".(new dateTime($tabRow[$i]))->format('j/n/Y')."</td>";
+                } else {
+                    echo "<td>".$tabRow[$i]."</td>";
+                }
+            }
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+    }
+
     public function ecrire($_nom, $_adresse, $_prix, $_commentaire, $_note, $_dateVisite){
         $_commentaire = addslashes($_commentaire);
+        $_nom = addslashes($_nom);
+        $_adresse = addslashes($_adresse);
         $this->db->exec ("INSERT INTO duchemin (nom, adresse, prix, commentaire, note, dateVisite) VALUES ('$_nom','$_adresse','$_prix','$_commentaire','$_note','$_dateVisite')");
     }
 
@@ -48,6 +73,32 @@ class duchemin {
         $requete = "SELECT nom FROM duchemin WHERE nom='$_nom'";
         $execution = $this->db->query($requete);
         return $execution->fetch();
+    }
+
+    public function rechercheId($_id){
+        echo "<script>alert('".$_id."');</script>";
+        $requete = "SELECT id FROM duchemin WHERE id='$_id'";
+        $execution = $this->db->query($requete);
+        return $execution->fetch();
+    }
+
+    public function afficherId($_id){
+        $requete = "SELECT * From duchemin WHERE id='$_id'";
+        ?><table><tr><th>nom</th><th>adresse</th><th>prix</th><th>commentaire</th><th>note</th><th>date de visite</th></tr><?php
+        while ($tabRow = $requete->fetch()){
+            echo "<tr>";
+            for ($i = 1; $i < count($tabRow); $i++){
+                if ($i == 5){
+                    echo "<td>".$tabRow[$i]."/10</td>";  
+                } else if ($i == 6){
+                    echo "<td>".(new dateTime($tabRow[$i]))->format('j/n/Y')."</td>";
+                } else {
+                    echo "<td>".$tabRow[$i]."</td>";
+                }
+            }
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
     }
 }
 ?>
