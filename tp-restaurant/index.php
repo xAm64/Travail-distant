@@ -14,6 +14,6 @@ $maTable->lecture();
 <!-- </table>
 <table> -->
 	<p>Gestion des données</p>
-	<tr><td><a href="ajout.php"><input type="button" value="Ajouter"></a></td><td><a href="modifier.php"><input type="button" value="Modifier / Supprimer"></a></td></tr>
+	<tr><td><a href="ajout.php"><input type="button" value="Ajouter"></a></td><td><a href="suppression.php"><input type="button" value="Supprimer"></a></td></tr>
 </table>
 <?php require_once ("fonct/footer.php"); ?>

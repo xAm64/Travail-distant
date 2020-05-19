@@ -7,10 +7,9 @@ $myTable = new duchemin;
 <h2>Modifier ou supprimmer un commentaire</h2>
 <?php
 if (verifId() == true){
-    if (verifNoVide($_GET['id'])==true){
-        if (verifContenue($_GET['id'])==true){
-            echo $myTable->afficherId($numero);
-        }
+    $identifiant = $_GET['nom'];
+    if (verifNoVide($identifiant) == true && verifContenue($identifiant) == true){
+        echo "<p>Vous voulez supprimmer l'id: ".$identifiant."?</p>";
     }
 }
 echo "<p>Liste des commentaires</p>";
@@ -19,7 +18,7 @@ echo $myTable->modifier();
 //fonctions
 function verifId(){
     $verif = false;
-    if (isset($_GET['id'])){
+    if (isset($_GET['nom'])){
         $verif = true;
     }
     return $verif;
@@ -31,13 +30,13 @@ function verifNoVide($_valeur){
     }
     return $verif;
 }
-function verifContenue($_id){
+function verifContenue($_nom){
     $verif = false;
-    if (($myTable->rechercheId($_id))!=null){
+    if ($myTable->recherche($_nom) != null){
         $verif = true;
     }
     return $verif;
 }
-
+?><br><a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a><?php
 require_once ("fonct/footer.php");
 ?>

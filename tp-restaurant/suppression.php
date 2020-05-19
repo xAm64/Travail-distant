@@ -17,27 +17,20 @@ function verifierNonVide($_valeur){
     }
     return $verify;
 }
-function afficherFormulaire(){
-    $formulaire = '
-    <form action="'.$_SERVER['PHP_SELF'].'" method="get" enctype="multipart/form-data">
-        <p>Indiquer le nom du contenue à supprimmer</p><input type="text" name="personne"><button type="submit">Supprimmer</button>
-    </form>';
-    return $formulaire;
-}
 
 //code
 echo "<h2>Supprimmer une personne</h2>";
 if (isset($_POST['personne'])){
     $verify=true;
-    if (verifierNonVide($_POST['personne'])==false){
+    if (verifierNonVide($_GET['personne'])==false){
         $verify=false;
     }
-    if ($myTable->recherche($_POST['personne'])==null){
+    if ($myTable->recherche($_GET['personne'])==null){
         $verify=false;
     }
     if ($verify==true){
-        $myTable->effacer($_POST['personne']);
-        echo "<p>La partie de: ".$_POST['personne']." à bien été effacer</p>";
+        $myTable->effacer($_GET['personne']);
+        echo "<p>La partie de: ".$_GET['personne']." à bien été effacer</p>";
         echo '<a href="index.php"><input type="button" value="◄ Retour à l\'accueil"></a>';
     } else {
         echo '<p class="text-danger>Erreur importante détecter, l\'action n\'a pas abouti</p>';
@@ -49,7 +42,6 @@ if (verifierGet()==true){
     if(verifierNonVide($personne)==true){
         if (verifierNonVide($myTable->recherche($personne))==false){
             echo '<p class="text-danger">Ce nom n\'existe pas !</p>';
-            echo afficherFormulaire();
         } else {
             // créer un formulaire de confirmation de suppression
             echo '<p class="text-success">Ce nom existe</p>';
@@ -65,13 +57,12 @@ if (verifierGet()==true){
         }
     } else {
         echo '<p class="text-danger">Veuillez indiquer un nom, je ne suis pas madame soleil</p>';
-        echo afficherFormulaire();
     }
 } else {
-    echo afficherFormulaire();
+    echo "<p>Séléctionner un nom dans la liste</p>";
 }
 ?><br><a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a><?php
 echo "<p>Liste des commentaires</p>";
-echo $myTable->lecture();
+echo $myTable->modifier();
 require_once ("fonct/footer.php");
 ?>
