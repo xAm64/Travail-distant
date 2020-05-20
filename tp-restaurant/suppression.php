@@ -63,6 +63,6 @@ if (verifierGet()==true){
 }
 ?><br><a href="index.php"><input type="button" value="◄ Retour à l'accueil"></a><?php
 echo "<p>Liste des commentaires</p>";
-echo $myTable->modifier();
+echo $myTable->modifier('supprimmer');
 require_once ("fonct/footer.php");
 ?>
