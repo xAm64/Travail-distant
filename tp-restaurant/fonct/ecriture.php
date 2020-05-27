@@ -35,6 +35,24 @@ class duchemin {
         echo "</tbody></table>";
     }
 
+    public function genererCollection(){
+        $maChaine = '[';
+        $this->requete->execute();
+        while($tabObjet = $this->requete->fetch(PDO::FETCH_ASSOC)){
+            $maChaine.= "{";
+            $maChaine.= '"ID":'.$tabObjet['id'];
+            $maChaine.= '"nom":'.$tabObjet['nom'];
+            $maChaine.= '"adresse":'.$tabObjet['adresse'];
+            $maChaine.= '"commentaire":'.$tabObjet['prix'];
+            $maChaine.= '"note":'.$tabObjet['note'];
+            $maChaine.= '"dateVisite":'.$tabObjet['dateVisite'];
+            $maChaine.= '},';
+        }
+        substr($maChaine,0,-1);
+        $maChaine = ']';
+        return json_encode($maChaine);
+    }
+
     public function modifier($_action){
         $this->requete->execute();
         echo "<table>
