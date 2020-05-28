@@ -40,15 +40,15 @@ class duchemin {
         $this->requete->execute();
         while($tabObjet = $this->requete->fetch(PDO::FETCH_ASSOC)){
             $maChaine.= '{';
-            $maChaine.= '"ID":'.$tabObjet['id'];
-            $maChaine.= '"nom":'.$tabObjet['nom'];
-            $maChaine.= '"adresse":'.$tabObjet['adresse'];
-            $maChaine.= '"commentaire":'.$tabObjet['prix'];
-            $maChaine.= '"note":'.$tabObjet['note'];
+            $maChaine.= '"ID":'.$tabObjet['id'].',';
+            $maChaine.= '"nom":'.$tabObjet['nom'].',';
+            $maChaine.= '"adresse":'.$tabObjet['adresse'].',';
+            $maChaine.= '"commentaire":'.$tabObjet['commentaire'].',';
+            $maChaine.= '"prix":'.$tabObjet['prix'].',';
+            $maChaine.= '"note":'.$tabObjet['note'].',';
             $maChaine.= '"dateVisite":'.$tabObjet['dateVisite'];
             $maChaine.= '},';
         }
-        $longueur = strlen($maChaine);
         $maChaine = substr($maChaine,0,-1);
         $maChaine.= ']';
         return $maChaine;
