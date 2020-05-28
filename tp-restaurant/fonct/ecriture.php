@@ -39,7 +39,7 @@ class duchemin {
         $maChaine = '[';
         $this->requete->execute();
         while($tabObjet = $this->requete->fetch(PDO::FETCH_ASSOC)){
-            $maChaine.= "{";
+            $maChaine.= '{';
             $maChaine.= '"ID":'.$tabObjet['id'];
             $maChaine.= '"nom":'.$tabObjet['nom'];
             $maChaine.= '"adresse":'.$tabObjet['adresse'];
@@ -48,9 +48,10 @@ class duchemin {
             $maChaine.= '"dateVisite":'.$tabObjet['dateVisite'];
             $maChaine.= '},';
         }
-        substr($maChaine,0,-1);
-        $maChaine = ']';
-        return json_encode($maChaine);
+        $longueur = strlen($maChaine);
+        $maChaine = substr($maChaine,0,-1);
+        $maChaine.= ']';
+        return $maChaine;
     }
 
     public function modifier($_action){
