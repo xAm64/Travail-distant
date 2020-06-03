@@ -1,4 +1,5 @@
-<?php ?>//metre le ? en echo
+<?php
+echo '
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 	<meta name="Author" content="Manex"/>
 	<meta name="Keywords" content="exercice" />
 	<meta name="Description" content="TP Immo du chateau" />
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="bootstrap.css">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>';
 ?>

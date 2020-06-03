@@ -6,6 +6,10 @@ require_once ("fonct/ecriture.php");
 $maTable = new duchemin();
 $monJson = $maTable->genererCollection(); //mon json est ici
 
+$flux = fopen("fonct/resto.json","w+");
+fwrite($flux, $monJson);
+fclose($flux);
+
 echo "<p> Json brut :<br>".$monJson."<br>Fin du post</p>";
 echo '<script src="fonct/script.js"></script>';
 require_once ("fonct/footer.php");
