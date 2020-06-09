@@ -1,1 +1,23 @@
 body {background: #020; color: #9f9}
+
+/* Navigateur */
+.menu-principal li {list-style: none;
+background: #010; color: #995;
+padding: 4px;
+font-size: 16px;
+text-decoration: none}
+.menu-principal ul {background: #333;
+margin: 0; padding: 0}
+.menu-principal ul li {list-style: none;
+line-height: 40px;
+float: left}
+.menu-principal ul li a {color: #dfa;
+text-decoration: none}
+.menu-principal li:hover {background: #343}
+.menu-principal li a:hover {color: #ff6;
+border-bottom: 2px solid #faa}
+.menu-principal ul li ul {display: none}
+.menu-principal ul li:hover ul {display:list-item;
+position: absolute;
+list-style: none}
+.menu-principal ul li:hover ul li {float: none}

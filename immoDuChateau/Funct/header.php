@@ -9,8 +9,9 @@ echo '
 	<meta name="Author" content="Manex"/>
 	<meta name="Keywords" content="exercice" />
 	<meta name="Description" content="TP Immo du chateau" />
-	<link rel="stylesheet" href="bootstrap.css">
-	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="Funct/bootstrap.css">
+	<link href="Funct/style.css" rel="stylesheet">
 </head>
-<body>';
+<body>
+';
 ?>

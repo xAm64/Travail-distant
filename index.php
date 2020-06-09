@@ -31,6 +31,8 @@
 	<tr><td>TP php 2</td><td><a href="tp-php-2">Lien</a></td></tr>
 	<tr><td>TP identification</td><td><a href="tp-identification">Lien</a></td></tr>
 	<tr><td>TP restaurant</td><td><a href="tp-restaurant">Lien</a></td></tr>
+	<tr><td>Immo du chateau</td><td><a href="immoDuChateau">Lien</a></td></tr>
+	</table>
 <?php 
 	echo '<p>test php</p>';
 ?>
