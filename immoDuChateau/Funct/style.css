@@ -1,23 +1,49 @@
-body {background: #020; color: #9f9}
+* {box-sizing: border-box}
+body {background: #121 url("../images/Ville-Epernay.jpg") no-repeat center fixed; color: #aea;
+Margin: 0; padding: 2px}
+.logo img {max-width: 134px}
 
-/* Navigateur */
+/* Menu principale */
+/* Style de base de la liste */
+.menu-principal {background: #010;
+border-radius: 10px 10px 0 0;
+padding: 5px;
+animation-duration: 0.8s;}
 .menu-principal li {list-style: none;
-background: #010; color: #995;
+color: #995;
 padding: 4px;
 font-size: 16px;
 text-decoration: none}
-.menu-principal ul {background: #333;
-margin: 0; padding: 0}
-.menu-principal ul li {list-style: none;
-line-height: 40px;
-float: left}
-.menu-principal ul li a {color: #dfa;
-text-decoration: none}
-.menu-principal li:hover {background: #343}
+.menu-principal ul {margin: 0; padding: 0}
+.menu-principal li:hover {background: #343;
+animation-duration: 0.8s}
 .menu-principal li a:hover {color: #ff6;
 border-bottom: 2px solid #faa}
+.menu-principal ul li a {color: #dfa;
+text-decoration: none}
 .menu-principal ul li ul {display: none}
+.menu-principal ul li:hover ul li {float: none;
+background: #010c}
+.menu-principal ul li:hover ul li:hover {background: #343;
+animation-duration: 1s}
+.menu-principal ul li {list-style: none}
+/* Grand écran */
+@media screen and (min-width: 780px){
+.menu-principal ul li {line-height: 80px;
+float: left}
 .menu-principal ul li:hover ul {display:list-item;
 position: absolute;
 list-style: none}
-.menu-principal ul li:hover ul li {float: none}
+/* petit écran */
+@media screen and (max-width: 779px){
+.menu-principal ul li {float: none}
+.menu-principal ul li:hover ul {display:list-item;
+position: relative;
+list-style: none}
+}
+
+/* Footer */
+footer {background: #010;
+border-radius: 0 0 10px 10px;
+font-size: 12px;
+padding: 3px}

@@ -1,5 +1,8 @@
 <?php
  echo '
- </body>
+<footer>
+    <p>©DWWM 1909 CRM Mulhouse</p>
+</footer>
+</body>
 </html>';
 ?>

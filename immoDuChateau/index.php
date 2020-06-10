@@ -1,9 +1,9 @@
 <?php
 require_once("Funct/header.php");//affiche le header
+?> <h1>Le contenue de la page</h1> <?php
 require_once("Funct/menu.php");//affiche le menu principale
 ?>
 <br>
-<h1>Le contenue de la page</h1>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non augue mattis, gravida ex a, egestas nibh. Etiam tempus scelerisque dolor sodales ultricies. Duis finibus eu nulla eget porttitor. Maecenas id laoreet magna. Pellentesque a ante vel risus ornare mollis. Suspendisse nisl erat, cursus ut risus nec, placerat ultricies velit. Proin quis turpis at felis vulputate hendrerit. Vestibulum nec vulputate sapien. Curabitur posuere imperdiet sagittis. Curabitur vel interdum nibh. Sed auctor porttitor turpis eget tincidunt. Nunc tincidunt tempor diam sit amet mollis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 <br>
