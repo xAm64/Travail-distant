@@ -6,9 +6,9 @@ Margin: 0; padding: 2px}
 /* Menu principale */
 /* Style de base de la liste */
 .menu-principal {background: #010;
-border-radius: 10px 10px 0 0;
 padding: 5px;
-animation-duration: 0.8s;}
+animation-duration: 0.8s;
+text-align: center;}
 .menu-principal li {list-style: none;
 color: #995;
 padding: 4px;
@@ -42,8 +42,15 @@ position: relative;
 list-style: none}
 }
 
+/* Main */
+main {background: #1216;
+animation-duration: 0.8s}
+main:hover {background: #121c;
+animation-duration: 0.4s}
+
 /* Footer */
 footer {background: #010;
 border-radius: 0 0 10px 10px;
 font-size: 12px;
-padding: 3px}
+padding: 3px;
+text-align: center}

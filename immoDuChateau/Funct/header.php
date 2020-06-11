@@ -1,7 +1,5 @@
-<?php
-echo '
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8" />
 	<title>Immo du chateau</title>
@@ -13,5 +11,3 @@ echo '
 	<link href="Funct/style.css" rel="stylesheet">
 </head>
 <body>
-';
-?>
