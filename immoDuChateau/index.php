@@ -5,9 +5,9 @@ require_once("Funct/menu.php");//affiche le menu principale
 <main>
 <h1>Immo du chateau</h1>
 <?php
-/* Zone modèle de Frank
-$connect=maConnection::getInstance();
-		  
+require_once ("Funct/main.php");
+$connect = immo::getImmo();
+	  
 $state=$connect->prepare("CAll afficher_par_type(?)");
 if(!empty($_GET["lib_cat"])){
     $libelle = $_GET["lib_cat"];
@@ -30,7 +30,7 @@ while($tabligne=$state->fetch()) {
             echo"</tr>";
         }
 		echo '</tbody></table>';	
-		echo'</div><!-- /.span4 --> </div><!-- /.row -->';*/
+		echo'</div><!-- /.span4 --> </div><!-- /.row -->';
 ?>
 </main>
 <?php
