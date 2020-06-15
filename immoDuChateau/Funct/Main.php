@@ -1,7 +1,5 @@
 <?php
 class immo {
-    private $db;
-    private $requete;
     private static $connexion = null;
 
     public function __construct (){

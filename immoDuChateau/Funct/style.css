@@ -9,6 +9,7 @@ Margin: 0; padding: 2px}
 padding: 5px;
 animation-duration: 0.8s;
 text-align: center;}
+.menu-principal a {display: block}
 .menu-principal li {list-style: none;
 color: #995;
 padding: 4px;
