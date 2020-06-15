@@ -11,8 +11,6 @@ $connect = immo::getImmo();
 $state=$connect->prepare("Call afficher_par_type(?)");
 if(!empty($_GET["lib_cat"])){
     $libelle = $_GET["lib_cat"];
-} else {
-	$libelle="terrain";
 }
 $state->bindParam(1,$libelle,PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT,250);
 $state->execute();

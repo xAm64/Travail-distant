@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 10 juin 2020 à 09:44
+-- Généré le : lun. 15 juin 2020 à 14:01
 -- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.4
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `immo_du_chateau`
 --
+
+DELIMITER $$
+--
+-- Procédures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `afficher_par_type` (IN `libelle_cat` VARCHAR(250))  BEGIN
+    SELECT biens_immobiliers.*
+    FROM biens_immobiliers,categories
+    WHERE categories.id_categorie = biens_immobiliers.id_categorie AND categories.lib_categorie=libelle_cat;  -- Utilisation du paramètre
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -64,7 +77,10 @@ CREATE TABLE `biens_immobiliers` (
 
 INSERT INTO `biens_immobiliers` (`id`, `titre`, `nbr_pieces`, `surface`, `prix_vente`, `description`, `ges`, `classe_eco`, `meuble`, `localisation`, `num_departement`, `ville`, `charges_annuelles`, `id_utilisateur_commercial`, `id_categorie`, `id_proprietaire`) VALUES
 (1, 'Maison de maître au bord du Lac ', 5, '150.00', '550000.00', 'Belle maison de style située au bord du lac D\'Annecy...Emplacement avec vue sur le lac.', 'D', 'C', 0, 'Idéalement situé à 2 pas du centre de la vieille ville, quartier sud  ', '74', 'Annecy', '0.00', 1, 2, 2),
-(2, 'Beau F3 MEUBLE\r\n', 3, '94.00', '220000.00', 'Beau F3 situé au 1er étage d\'une résidence avec vue sur le lac.', 'B', 'C', 0, 'A 2 pas du centre ville et des commerces , dans le quartier vieille ville, rue de l\'Ours', '74', 'Annecy', '2000.00', 2, 1, 3);
+(2, 'Beau F3 MEUBLE\r\n', 3, '94.00', '220000.00', 'Beau F3 situé au 1er étage d\'une résidence avec vue sur le lac.', 'B', 'C', 0, 'A 2 pas du centre ville et des commerces , dans le quartier vieille ville, rue de l\'Ours', '74', 'Annecy', '2000.00', 2, 1, 3),
+(3, 'Belle villa orienté plein sur avec belle vue les les Pyrénées', 6, '391.00', '606210.00', 'Situé à seulement 5minutes de la mer, cette villa vous offrira une belle vue sur les Pyrénées, proche des commerces et au calme vous profiterez de la vie  ', 'B', 'C', 1, '28 rue du lilas', '64', 'Bidart', '235.00', 1, 2, 3),
+(4, 'Centre ville de Bayonne', 3, '45.00', '196000.00', 'Un bel appartement situé au centre ville de Bayonne avec une belle vue sur la Nive, principalement piétonnier vous avez tout à coté, à seulement 3 minutes à pieds des transports en commun.', 'D', 'D', 0, '26 Rue du centre ville', '64', 'Bayonne', '0.00', 1, 1, 2),
+(5, 'Terrain à bâtir dans les landes', 0, '8500.00', '86000.00', 'Un beau terrain plat située à coté de la forêt idéal pour construire votre futur maison', 'A', 'A', 1, '877 route de labenne-océan', '40', 'Labenne', '0.00', 2, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -83,9 +99,9 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id_categorie`, `lib_categorie`) VALUES
 (1, 'Appartement'),
-(2, 'Maison individuelle'),
+(2, 'Maison'),
 (3, 'Terrains'),
-(4, 'Locaux professionnels');
+(4, 'LocauxPro');
 
 -- --------------------------------------------------------
 
@@ -251,7 +267,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `biens_immobiliers`
 --
 ALTER TABLE `biens_immobiliers`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
