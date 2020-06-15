@@ -7,8 +7,8 @@ require_once("Funct/menu.php");//affiche le menu principale
 <?php
 require_once ("Funct/main.php");
 $connect = immo::getImmo();
-	  
-$state=$connect->prepare("CAll afficher_par_type(?)");
+
+$state=$connect->prepare("Call afficher_par_type(?)");
 if(!empty($_GET["lib_cat"])){
     $libelle = $_GET["lib_cat"];
 } else {
