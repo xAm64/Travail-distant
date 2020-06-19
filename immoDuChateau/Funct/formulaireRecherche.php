@@ -107,8 +107,11 @@
 <option value="987">(987) Polénésie </option>
 <option value="988">(988) Nouvelle Calédonie </option>
 </select></p>
-<p>Budget: <input type="number" name="prix" step="5000" value="" max="995000000" min="10000">€</p>
-<p>Nombre de pièces recherché <input type="number" name="nbPieces" min="1"></p>
-<input type="hidden" name="lib_cat" value="<?php $_GET["lib_cat"] ?>">
+<p>Budget Maximum: <input type="number" name="prix" step="5000" value="" max="995000000" min="10000">€</p>
+<p>Nombre de pièces recherché
+<input type="radio" id="egal" name="valPcs" value="egal" checked><label for="egal">exactement</label>
+<input type="radio" id="sup" name="valPcs" value="mini"><label for="sup">minimum</label>
+<input type="number" name="nbPieces" min="1"> pièces</p>
+<input type="hidden" name="lib_cat" value="<?php echo $_GET["lib_cat"] ?>">
 <button type="submit" class="btn btn-dark">Envoyer</button>
 </form>

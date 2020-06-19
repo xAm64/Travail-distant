@@ -21,5 +21,13 @@ class immo {
         }
         return self::$connexion;
     }
+
+    public function filtreRequete ($_requete, $_signe, $_valeur){
+        $text = ' AND
+        SELECT * 
+        FROM biens_immobiliers
+        WHERE '.$_requete.' '.$_signe.' '.$_valeur;
+        return $text;
+    }
 }
 ?>
