@@ -23,10 +23,8 @@ class immo {
     }
 
     public function filtreRequete ($_requete, $_signe, $_valeur){
-        $text = ' AND
-        SELECT * 
-        FROM biens_immobiliers
-        WHERE '.$_requete.' '.$_signe.' '.$_valeur;
+        $text = ' AND 
+        biens_immobiliers.'.$_requete.' '.$_signe.' '.$_valeur;
         return $text;
     }
 }

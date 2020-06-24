@@ -17,6 +17,6 @@
         <li><a href="?loc=bengalo">Bengalo</a></li>
         <li><a href="?loc=autre">Autres</a></li>
         </ul></li>
-        <li><a href="#">Estimation de biens</a></li>
+        <li><a href="gestion.php">Gestions de biens</a></li>
     </ul>
 </nav>
