@@ -27,5 +27,10 @@ class immo {
         biens_immobiliers.'.$_requete.' '.$_signe.' '.$_valeur;
         return $text;
     }
+
+    function encodePassword ($_motDePass){
+        $Emprinte = password_hash($_motDePass, PASSWORD_DEFAULT);
+        return $Emprinte;
+    }
 }
 ?>
