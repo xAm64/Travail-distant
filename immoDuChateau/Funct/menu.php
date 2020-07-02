@@ -10,7 +10,7 @@
             <li><a href="?lib_cat=LocauxPro">Locaux professionnels</a></li>
             <li><a href="?lib_cat=Terrains">Terrains</a></ul>
         </li>
-        <li><a href="#">Simulateur de crédit</a></li>
+        <li><a href="simulateurCredit.php">Simulateur de crédit</a></li>
         <li><a href="#">Locations</a><ul>
         <li><a href="?loc=Appartement">Appartements</a></li>
         <li><a href="?loc=Maison">Maisons</a></li>
