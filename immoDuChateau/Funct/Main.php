@@ -28,9 +28,5 @@ class immo {
         return $text;
     }
 
-    function encodePassword ($_motDePass){
-        $Emprinte = password_hash($_motDePass, PASSWORD_DEFAULT);
-        return $Emprinte;
-    }
 }
 ?>
