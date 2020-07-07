@@ -2,7 +2,7 @@
 require_once ("funct/header.php");
 require_once ("Funct/menu.php");
 ?><h2>Simulateur de crédit</h2>
-<p><a href="index.php"><img src="images/retour.gif"></a></p><?php
+<p><a class="retour" href="index.php"><img src="images/retour.gif"></a></p><?php
 if(isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
     $pair = false;
     $montant = $_GET['montant'];
@@ -51,11 +51,17 @@ if(isset($_GET['montant']) && isset($_GET['taux']) && isset($_GET['annees'])){
 
 } else {
     ?>
-    <p>Une erreur à été détecter<br>
-    Le calcul ne peux pas se faire</p>
-    <a href="index.php"><input type="button" value="recommencer"></a>
+    <div class="cadre">
+		<p>Saisissez les informations suivantes</p>
+		<form method="get" enctype="text/plain">
+			<p>Montant emprunté: <input type="number" name="montant" value="2000" min="500"></p>
+			<p>Taux intérêt: <input type="number" name="taux" value="3" min="0" max="25">%</p>
+			<p>Nombre d'années: <input type="number" name="annees" value="3" min="1" max="35"></p>
+			<button type="submit">Envoyer</button>
+		</form>
+	</div>
     <?php
 }
-echo '<p><a href="index.php"><img src="images/retour.gif"></a></p>';
+echo '<p><a class="retour" href="index.php"><img src="images/retour.gif"></a></p>';
 require_once ("funct/footer.php");
 ?>

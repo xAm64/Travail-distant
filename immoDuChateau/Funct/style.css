@@ -19,7 +19,9 @@ text-decoration: none}
 .menu-principal li:hover {background: #343;
 animation-duration: 0.8s}
 .menu-principal li a:hover {color: #ff6;
-border-bottom: 2px solid #faa}
+border-bottom: 2px solid #faa;
+-webkit-box-shadow: 0px 0px 2px 3px #ff9;
+-moz-box-shadow: 0px 0px 2px 3px #ff9}
 .menu-principal ul li a {color: #dfa;
 text-decoration: none}
 .menu-principal ul li ul {display: none}
@@ -55,6 +57,25 @@ border-radius: 0 0 10px 10px;
 font-size: 12px;
 padding: 3px;
 text-align: center}
+
+/* formulaires */
+input, select {background: #342; color: #9f9;
+border: 1px solid #cf9; border-radius: 2px 8px;
+padding: 3px;
+transition-duration: 400ms}
+input:hover, select:hover {background: #553 ; color: #ff9;
+transition-duration: 800ms;
+-webkit-box-shadow: 0px 0px 3px 4px #ff9;
+-moz-box-shadow: 0px 0px 3px 4px #ff9}
+button {background: #342 ; color: #9f9;
+border: 1px solid #cf9; border-radius: 2px 8px;
+padding : 2px;
+transition-duration: 400ms}
+button:hover {background: #685 ; color: #ff9;
+transition-duration: 800ms;
+-webkit-box-shadow: 0px 0px 3px 4px #ff9;
+-moz-box-shadow: 0px 0px 3px 4px #ff9}
+
 
 /* Lien retour */
 .retour {text-align: center}

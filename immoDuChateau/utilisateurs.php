@@ -1,10 +1,14 @@
+<?php
+require_once ("funct/header.php");
+require_once ("funct/menu.php");
+?>
 <from action ="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <p><input type="radio" id="inscription" name="service" value="inscription"><label>Inscription</label>
     <input type="radio" id="connexion" name="service" value="connexion" checked><label>Connexion</label></p>
-    <p>Nom d'utilisateur<input type="text" name="username"></p>
+    <p>Nom d'utilisateur <input type="text" name="username"></p>
     <p>Prénom <input type="text" name="prenom"></p>
     <p>Adresse e-mail <input type="email" name="mail"></p>
-    <p>Mot de pass<input type="password" name="password"></p>
+    <p>Mot de pass <input type="password" name="password"></p>
     <p><button type="submit">Envoyer</button></p>
 </from>
 <?php
@@ -49,4 +53,8 @@ function encodePassword ($_motDePass){
     $Emprinte = password_hash($_motDePass, PASSWORD_DEFAULT);
     return $Emprinte;
 }
+?>
+<a href="index.php"><img src="images/retour.gif" alt="retour"></a>
+<?php
+require_once ("funct/footer.php");
 ?>

@@ -1,6 +1,6 @@
 <nav class="menu-principal navbar">
     <ul>
-        <li class="logo"><a href="#"><img src="images/logo.gif" alt="Immo du chateau"></a></li>
+        <li class="logo"><a href="index.php"><img src="images/logo.gif" alt="Immo du chateau"></a></li>
         <li><a href="#">Agence</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Achats/Ventes</a><ul>
@@ -18,5 +18,6 @@
         <li><a href="?loc=autre">Autres</a></li>
         </ul></li>
         <li><a href="gestion.php">Gestions de biens</a></li>
+        <li><a href="utilisateurs.php">Accès membres</a></li>
     </ul>
 </nav>

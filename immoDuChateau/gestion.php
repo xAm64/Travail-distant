@@ -89,5 +89,47 @@ function redimensionImage($_extension, $_taille){
     }
     return $flux;
 }
+if(isset($_SESSION["nom_user"]) and !empty($_SESSION["nom_user"])){
+    ?>
+    <form method="POST" name="ajoutgestion" enctype="multipart/form-data" action="<?php $_SERVER['PHP_SELF'] ?>">
+	<legend>Ajouter un Bien Immobilier</legend>
+    <p>Titre présentation du bien immobilier <input type="text"  id="titre" name="titre" placeholder="le titre" class="form-control"></p>
+    <p>Nombre de pièce <input type="number"  step="1" id="nbpiece" name="nbpiece" placeholder="nombre piece"  min="1" max="136" class="form-control"></p>
+    <p>Surface <input type="number"  step="1" id="aire" name="aire" placeholder="superficie du bien"  min="1" max="900000" class="form-control"></p>
+    <p>Prix vendeur <input type="number"  step="5000" id="prix" name="prix" placeholder="Prix souhaités"  min="5000" max="9999995000"></p>
+    <p>Description <textarea class="form-control" name="description"></textarea></p>
+    <p>Diagnostique  Gaz à Effet de Serre <select name="ges" id="ges" class="form-control"  style=" max-width:100px">
+    <?php
+		for ($i ="a"; $i <= "f"; $i++) {
+			?><option value="<?php echo strtoupper($i) ?>"><?php echo strtoupper($i) ?></option><?php
+		}
+	?></select>
+    <p> Note classe economique <select name="eco" id="eco" class="form-control" style="max-width:100px">
+        <?php
+		for($i="a"; $i<="h" ; $i++){
+			?><option value="<?php echo strtoupper($i) ?>"><?php echo strtoupper($i) ?></option><?php
+		}
+		?></select><?php
+
+        $connect=immo::getImmo();
+		$rq="select * from categories";
+		$state=$connect->prepare($rq);
+        $state->execute();
+		?><select name="cat" id="cat" class="form-control" style="max-width:200px">';  
+		<option value="">Choisir une catégorie</option><?php
+		while($ligne=$state->fetch())
+		{
+			?><option value="<?php echo $ligne[0] ?>"><?php echo $ligne[1]?></option><?php
+		} 
+        ?></select>
+        <p>Charger une image <input type="file" name="image" id="image"></p> 
+		<P><input type="submit" value="Ajouter" name="valider" class="btn btn-success"  style="max-width:100px"></p>
+		</fieldset>
+		</form>
+		<?php
+	} else {
+        ?><p class="danger">Accès refusé</p><?php
+    }
+}
 include_once("funct/footer.php");
 ?>
