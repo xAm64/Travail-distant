@@ -46,6 +46,7 @@ if (!empty($_GET["lib_cat"])){
             $rq.= immo::filtreRequete('nbr_pieces', '>=', $_GET["nbPieces"]);
         }
     }
+    $rq.= ' ;';
     var_dump($rq);
     echo '<br>';
     $connect= immo::getImmo();
